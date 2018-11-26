@@ -1,0 +1,65 @@
+/*
+.header must have a font size of 46px
+.footer must have a font size of 10px
+.content must have a font size of 14px
+.navigation must have a font size of 12px
+.sidebar must have a font size of 10px
+*/
+
+*/
+* {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.header {
+    background: rgb(240, 240, 20);
+    font-size: 46;
+    
+}
+
+.content {
+    background: aqua;
+    width: 60%;
+    font-size: 14px;
+}
+
+.navigation {
+    background:yellow;
+    width: 20%;
+    font-size: 12px;
+}
+
+.sidebar {
+    background: blueviolet;
+    width: 20%;
+    font-size: 10px;
+}
+
+.footer {
+    background:  red;
+    font-size: 10px;
+}
+
+/* 4 If the class attribute finishes with r (example header, footer), the background must be magenta.*/
+*[class$="r"]{
+    background: magenta;
+}
+
+/* 5 If the class attribute contains an a (example nav) but do NOT finish with r, the background must be blue. */
+*[class*="a"]:not([class$="r"]) {
+    background: blue;
+}
+
+/*6 How could you add weight to the global font definition to win over the classes 
+added by point 3? */
+*{
+    font-weight: bold;
+}
+
+/* Imagine there is a declaration like class=”oh-no-inline-styles” 
+style=”background:red” and you need to 
+change the background to green withoutchanging the inline style.
+ How could you accomplish this? */
+
+ .oh-no-inline-styles:not()
