@@ -1,3 +1,6 @@
+
+/* Layout ========================================================================== */
+
 *, *:before, *:after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -8,35 +11,13 @@
 /* Small screens (default) */
 html { 
     font-size: 100%; 
-    border: 1px solid black;  
 }
-
-.container {
-    margin: 0 auto;
-    max-width: 48rem;
-    width: 90%;
-  }
 
 /* Medium screens (640px) */
 @media (min-width: 40rem) { 
     html { 
         font-size: 112%;
     }
-
-    .column {
-        float: left;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        border: 1px solid black;
-        display: inline-block;
-      }
-      
-      .column.full { width: 100%; }
-      .column.two-thirds { width: 66.7%; }
-      .column.half { width: 50%; }
-      .column.third { width: 33.3%; }
-      .column.fourth { width: 25%; }
-      .column.flow-opposite { float: right; }
 }
 
 /* Large screens (1024px) */
@@ -45,6 +26,40 @@ html {
         font-size: 120%; 
     }
 }
+
+/* Mobile First Grid  ========================================================================== */
+
+.column {
+    margin-bottom: 1.5rem;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+@media (min-width: 40rem) {
+    .column {
+        float: left;
+      
+        display: inline-flex;
+    }
+    
+    .column.full { width: 100%; }
+    .column.two-thirds { width: 66.7%; }
+    .column.half { width: 50%; }
+    .column.third { width: 33.3%; }
+    .column.fourth { width: 25%; }
+    .column.flow-opposite { float: right; }
+}
+
+/* Typografia  ========================================================================== */
+
+/*   ========================================================================== */
+.container {
+    margin: 5% auto;
+    max-width: 48rem;
+    width: 90%;
+  }
+
+  /* Clearfix by Nicolas Gallagher ========================================================================== */
 
 .clearfix:before,.clearfix:after {
     content: " ";
@@ -58,7 +73,72 @@ html {
 .clearfix {
     *zoom: 1;
 }
+.gallery-grid {
+    clear: both;
+    background: whitesmoke;
+    display: block;
+    float: left;
+    width: 100%;
+}
+/*
+.gallery-grid a {
+    display: block;
+}
+*/
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
 
+.screen {
+    background-color: rgba(0,0,0,0.6);
+    left: 0;
+    top: 0;
+    border-radius: 0;
+    height: 100%;   
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    z-index: 1000;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+}
+.screen:hover {
+    opacity: 1;
+}
+.title {
+    color:white;
+    font-family: arial, helvetica, sans-serif;
+    font-weight: bold;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 3.0s ease-in-out;
+    position: absolute;
+    text-align: center;
+}
+.gallery-grid img {
+    width: 100%;
+    padding: 1em;
+    
+}
+
+.gallery-grid a {
+    position: relative;
+}
+
+
+
+/*
 @media screen and (min-width:600px) {
     nav {
       float: left;
@@ -73,4 +153,4 @@ html {
       display: inline;
     }
   }
- 
+ */
