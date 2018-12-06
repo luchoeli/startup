@@ -132,12 +132,12 @@ Then extend a movie with it to have access to this methods.
 
 let social = {
     share(friendName){
-        console.log(friendName + " share "+ `${this.name}`);
+        console.log(friendName + " share "+ this.title);
     },
     
     like(friendName){
         
-        console.log(friendName + " likes "+ this.name);
+        console.log(friendName + " likes "+ this.title);
     }
 };
 
