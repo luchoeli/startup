@@ -1,28 +1,84 @@
-class Movie {
+class EventEmitter {
+    constructor() {
+        this.events = {};
+    }
+    on(eventName, callback) {
+        if( !this.events[eventName] ) {
+            this.events[eventName] = [];
+         }
+           
+         this.events[eventName].push(callback);
+
+         return () => {
+            this.events[eventName] = this.events[eventName].filter(eventFn => eventFn !== callback);
+          }  
+    }
+
+    emit(eventName, data) {
+        const event = this.events[eventName];
+        if( event ) {
+            event.forEach(fn => {
+                fn(eventName,data);
+            });
+        }
+    }
+
+    //se desubscribe de una funcion de in evento
+    off(eventName, callback) {
+        let unsubscribe = this.on(eventName, callback);
+        unsubscribe();
+    }
+
+    //se desubscribe de todo el evento
+    
+    offEvent(eventName){
+        //FIXME
+        debugger;
+        console.log(this.events.length);
+        for( var i=0 ; i<this.events.length ; i++){
+            console.log(this.events[i]);
+            if( this.events[i] == eventName ) {
+                delete events[i];
+                break;
+            }
+        }
+    }
+    
+    
+}
+
+class Movie extends EventEmitter {
     constructor(name, year, duration){
-        this.name = name;
+        super();
+        this.title = name;
         this.year = year;
         this.duration = duration;
-        this.title;  
         this.elenco = [];
-        
+
+        this.on('playMovie', data => {console.log("reproduciendo " + this.title)});
+        this.on('playMovie', data => {console.log("reproduciendo2 " + this.title)});
+        this.on('pauseMovie', data => {console.log(this.title + ": pausada.")});
+        this.on('resumeMovie', data => {console.log("reanudando " + this.title)});
+
     }
 
     //methods
     play() {
-        //this.emit('event:playMovie', {duration: this.duration} );
+        this.emit('playMovie', this );
     }
 
     pause() {
-
+        this.emit('pauseMovie', this);
     }
 
     resume() {
-
+        this.emit('resumeMovie', this);
     }
 }
 
 Movie.prototype.addCast = function(actores){
+
+    //elenco = elenco.concat(actores);
     if (Array.isArray(actores)){
         for ( i=0 ; i < actores.length || actores.length == 0 ; i++ ){
                 this.elenco.push(actores[i]);
@@ -33,7 +89,6 @@ Movie.prototype.addCast = function(actores){
 }
 
 
-const peli = new Movie("titanic",1997, "2:57:23");
 
 class Actor {
     constructor(name, age){
@@ -48,37 +103,24 @@ const actors = [
     new Actor('Linda Hamilton', 50)
 ];
 
-const johnP = new Actor("sfdf",32);
-
-class EventEmitter {
-    constructor() {
-        this.events = {};
+class Logger{
+    log(eventName,info){
+        console.log("--- Evento: "+eventName+ " de la pelicula "+ info.title +" disparado.");
     }
-    on(eventName, callback) {
-        if( !this.events[eventName] ) {
-            this.events[eventName] = [];
-         }
-           
-         this.events[eventName].push(callback);
-
-         return () => {
-            this.events[eventName] = this.events[eventName].filter(eventFn => callback !== eventFn);
-          }  
-    }
-
-    emit(eventName) {
-        const event = this.events[eventName];
-        if( event ) {
-            event.forEach(fn => {
-            fn.call(null, data);
-            });
-        }
-    }
-
-    //unsubscribe implementado en el subs
-    off(eventName, callback) {
-        let unsubscribe = emitter.on('event:name-changed', data => console.log(data));
-        unsubscribe();
-    }
-    
 }
+
+
+const johnP = new Actor("John Perez",32);
+const peli = new Movie("titanic",1997, "2:57:23");
+
+let logger = new Logger();
+peli.on('playMovie', logger.log);
+
+/*
+let func =  peli.events["playMovie"];
+func = func[0];
+peli.off("playMovie", func);
+*/
+peli.offEvent("playMovie");
+
+
