@@ -33,7 +33,7 @@ class EventEmitter {
     
     offEvent(eventName){
         //FIXME
-        debugger;
+        //debugger;
         console.log(this.events.length);
         for( var i=0 ; i<this.events.length ; i++){
             console.log(this.events[i]);
@@ -124,3 +124,21 @@ peli.off("playMovie", func);
 peli.offEvent("playMovie");
 
 
+/*
+Create an object called social, defining the methods share(friendName) and like(friendName) that generates the following output {friendName} likes/share {movieName}.
+
+Then extend a movie with it to have access to this methods.
+*/
+
+let social = {
+    share(friendName){
+        console.log(friendName + " share "+ `${this.name}`);
+    },
+    
+    like(friendName){
+        
+        console.log(friendName + " likes "+ this.name);
+    }
+};
+
+Object.assign(Movie.prototype,social);
