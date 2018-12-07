@@ -5,45 +5,45 @@
     <title> Sign Up </title> 
 </head>
     <body>
-        <div class="container">
+        <form class="container">
             
             <h1>Sign UP</h1>
 
             <p>Please fill in this form to create an account.</p>
             
-            <form>
+            <div>
                 <label for="name"> <b>Name</b> </label>
                 <input type="text" placeholder="Type your name" id="name" required>
-            </form>
+            </div>
 
-            <form>
+            <div>
                 <label for="lastname"> <b>Last name</b> </label>
                 <input type="text" placeholder="Type your last name" id="lastname" required>
-            </form>
+            </div>
 
-            <form>
+            <div>
                 <label for="email"> <b>E-mail</b> </label>
                 <input type="text" placeholder="Type your e-mail" id="email" required>
-            </form>
+            </div>
             
-            <form>
+            <div>
                 <label for="bday"> <b>Date of birth</b> </label>
                 <input type="date" name="birthday" id="bday" required>
-            </form>
-            <form>
+            </div>
+            <div>
                 <label for="deporteDB"><b>Preferred sport</b></label>
                 <select name="deporte" id="deporteDB">
                     <option value="futbol">Football</option>
                     <option value="rugby">Rugby</option>
                     <option value="tenis">Tennis</option>
                 </select>
-            </form>
+            </div>
 
-            <form>
+            <div>
                 <p>You can insert a brief description of you here!</p>
                 <textarea name="biografia" id="bio" cols="30" rows="10"></textarea>
-            </form>
-        </div>
+            </div>
+        </form>
 
         <button type="submit"> Submmit </button>
         <button type="reset"> Reset </button>

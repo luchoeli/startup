@@ -112,7 +112,7 @@ article.flexItem:hover {
     filter: grayscale(0%);
 }
 
-article.flexItem:hover .screen{
+article.flexItem:hover .screenPopDown{
     opacity: 1;
   
 }
