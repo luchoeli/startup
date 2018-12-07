@@ -1,0 +1,136 @@
+html {
+    font-size:  14px;
+}
+
+.contenido {
+    margin: 0 auto;
+    max-width: 70rem;
+    width: 90%;
+    overflow: auto;
+}
+
+
+body {
+    background-color: rgb(173, 166, 166);
+    font-family: sans-serif;
+    font-size: 14px;
+    margin-left:  auto;
+    margin-right: auto;
+    text-align: center;
+   
+}
+
+.header {
+    background: rgb(240, 240, 20);
+    border: 1px solid black;
+    border-radius: 15px;
+    clear:both;
+    font-size: 46;
+    margin: 2.5%;
+    padding: 5% 2.5%;   
+}
+
+.content {
+    background: aqua;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 15px;
+    font-size: 14px; 
+    float: left;
+    margin-left: 2.5%;
+    margin-right: auto;
+    padding: 2.5% 2.5%;    
+    width: 60%;
+}
+
+.content>*:not(p) {
+    border: 1px solid black;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin: 5% 2.5%;
+    padding: 2.5% 2.5%;
+}
+
+.navigation  {
+    background:yellow;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: white;
+    font-size: 12px;
+    float: left;
+    width: 20%;
+  
+    padding: 2.5% 2.5%;   
+}
+
+
+.sidebar {
+    background: blueviolet;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-sizing: border-box;
+    float: right;   
+    font-size: 10px;
+    padding: 2.5% 2.5%;
+    width: 15%;
+    min-height: 13em;
+}
+
+.footer {
+    background: red;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-sizing: border-box;
+    clear: both;
+    font-size: 10px;
+    float: bottom;
+    margin: 2.5%;
+    padding: 1% 0%;
+    text-align: center;
+  
+}
+
+#mainContent {
+   margin: 2.5% 2.5% 2.5% 2.5%;
+   overflow: auto;
+   zoom: 1;
+}
+
+#mainContent>* {
+   height: 30rem; 
+   overflow: auto;
+   zoom: 1;
+}
+p {
+    word-break: break-all;
+}
+ 
+
+/* 4 If the class attribute finishes with r (example header, footer, sidebar), the background must be magenta.  */
+*[class$="r"]{
+    background: magenta;
+}
+
+
+/* 5 If the class attribute contains an a (example nav) but do NOT finish with r, the background must be blue. */
+*[class*="a"]:not([class$="r"]) {
+    background: blue;
+}
+ 
+/*6 How could you add weight to the global font definition to win over the classes added by point 3? */
+html {
+    font-weight: bold !important; 
+}
+
+/* 7 Imagine there is a declaration like class=”oh-no-inline-styles” 
+style=”background:red” and you need to 
+change the background to green withoutchanging the inline style.
+ How could you accomplish this? */
+
+
+.oh-no-inline-styles {
+     background: green !important;
+ }
+
+ 

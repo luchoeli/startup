@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+
+        <meta charset="utf-8">
+
+        <title> My grid Page </title>
+
+        <link rel="stylesheet" type="text/css" href="stylesheet/reset.css">
+        <link rel="stylesheet" type="text/css" href="stylesheet/normalize.css">
+        <link rel="stylesheet" type="text/css" href="stylesheet/flex2-5.css">
+
+    </head>   
+
+
+    <body>
+        <article class="contenido">
+
+            <header class="encabezado" >
+                <a href="file:///C:/Users/luciano.elissondo/startup/00-HTML-CSS-basics/2-5-flexBox.html"> 
+                    <h1>More used Social Networks </h1>
+                </a>    
+
+                <article class="menu-nav">
+                    <h1> Menu ks </h1>
+                </article>
+            </header>
+
+            <section class="flexContainer">
+                <header>
+                    <h1>Showcase</h1>
+                    <article class="description">
+                        <p>Incredible Types is a curated collection and showcase of outstanding typography and design from around the world. We currently have 426 pieces of inspirational design in our showcase, from 432 creatives and studios from 51 different countries.</p>
+                    </article>
+                </header>
+
+                
+                <article class="flexItem">
+                    <span class="screenPopDown">
+                        <p> go to Facebook site!</p>
+                    </span> 
+                    <a href="https://www.facebook.com/"  title="sitio de facebook" target="_blank">
+                        <img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_square-512.png"
+                            alt="logo de facebook">                            
+                    </a>      
+                </article>
+    
+                <article class="flexItem">
+                    <span class="screenPopDown">
+                        <p> Go to WeChat site!</p>
+                    </span> 
+                    <a href="https://www.wechat.com/"  title="sitio de wechat" target="_blank">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEq_zo0sZ3l1rhZnS1LqeA6TG_Vj4W1BqucplqkLJgHz7nwgR-Hw"
+                        alt="logo de wechat">
+                    </a>      
+                </article>
+                
+    
+                <article class="flexItem">
+                    <span class="screenPopDown">
+                        <p>Go to LinkedIn site!</p>
+                    </span> 
+                    <a href="https://www.linkedin.com/"  title="sitio de Linkedin" target="_blank">
+                        <img src="data:image/png;base64,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"
+                            alt="logo de Linkedin">
+                    </a>      
+                </article>
+
+        
+                <article class="flexItem">
+                    <span class="screenPopDown">
+                        <p>Go to YouTube site!</p>
+                    </span> 
+                    <a href="https://www.facebook.com/"  title="Ir a Youtube!" target="_blank">
+                        <img src="http://entretenido.net/wp-content/uploads/2017/08/youtbe-300x168.png"
+                            alt="logo de YouTube">
+                    </a>      
+                </article>
+
+                <article class="flexItem">
+                    <span class="screenPopDown">
+                         <p>Go to Instagram site!</p>
+                    </span>  
+                    <a href="https://www.instagram.com/"  title="sitio de Instagram" target="_blank">
+                        <img src="https://i.pinimg.com/originals/a0/b3/0b/a0b30b7b751b30961fd4667b9c68b2ac.png"
+                            alt="logo de instagram">
+                    </a>   
+                </article>
+
+                <article class="flexItem">
+                    <span class="screenPopDown">
+                        <p>Go to Pinterest site!</p>
+                    </span>  
+                    <a href="https://www.instagram.com/"  title="sitio de Instagram" target="_blank">
+                        <img src="data:image/png;base64,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"
+                            alt="logo de Pinterest">
+                    </a>      
+                </article>                              
+            
+
+            
+                <article class="flexItem">
+                    <span class="screenPopDown">
+                        <p>Go to WhatsApp site!</p>
+                    </span> 
+                    <a href="https://www.whatsapp.com/"  title="sitio de Whatsapp" target="_blank">
+                        <img src="data:image/jpeg;base64,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"
+                            alt="logo de Whatsapp">
+                    </a>      
+                </article>
+
+                <article class="flexItem">
+                    <span class="screenPopDown">
+                        <p>Go to Skype site!</p>
+                    </span> 
+                    <a href="https://www.skype.com/"  title="sitio de skype" target="_blank">
+                        <img src="data:image/png;base64,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"
+                            alt="logo de skype">
+                    </a>      
+                </article>
+
+                
+                <article class="flexItem">
+                    <span class="screenPopDown">
+                        <p>Go to Spotify site!</p>
+                    </span> 
+                    <a href="https://www.skype.com/"  title="sitio de skype" target="_blank">
+                        <img src="https://images.offerup.com/PhaBmXGnUYgcVIMMqoNaGxoHPP0=/300x600/ea0e/ea0ec145f05c46d8be8492204ef0fdfd.jpg"
+                            alt="logo de Spotify">
+                    </a>      
+                    </article>
+            </section>
+
+        </article>              
+    </body>
