@@ -1,6 +1,3 @@
-
-/* Layout ========================================================================== */
-
 *, *:before, *:after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -27,8 +24,6 @@ html {
     }
 }
 
-/* Mobile First Grid  ========================================================================== */
-
 .column {
     margin-bottom: 1.5rem;
     border: 1px solid black;
@@ -50,16 +45,11 @@ html {
     .column.flow-opposite { float: right; }
 }
 
-/* Typografia  ========================================================================== */
-
-/*   ========================================================================== */
 .container {
     margin: 5% auto;
     max-width: 48rem;
     width: 90%;
   }
-
-  /* Clearfix by Nicolas Gallagher ========================================================================== */
 
 .clearfix:before,.clearfix:after {
     content: " ";
@@ -80,11 +70,7 @@ html {
     float: left;
     width: 100%;
 }
-/*
-.gallery-grid a {
-    display: block;
-}
-*/
+
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
@@ -136,21 +122,3 @@ a:-webkit-any-link {
     position: relative;
 }
 
-
-
-/*
-@media screen and (min-width:600px) {
-    nav {
-      float: left;
-      width: 25%;
-    }
-    section {
-      margin-left: 25%;
-    }
-  }
-  @media screen and (max-width:599px) {
-    nav li {
-      display: inline;
-    }
-  }
- */

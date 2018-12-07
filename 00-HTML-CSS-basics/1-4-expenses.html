@@ -2,35 +2,43 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8">
-    <!-- Esto es el título de la página que usualmente aparece en la barra de título del navegador -->
     <title>Mis expensas</title>
     <style>
       table, th, td {
           border: 1px solid black;
       }
     </style>
-
 </head>
-<body>
 
-<h2>My expenses</h2>
-    <table>
-        <tr>
-          <th>Fecha</th>
-          <th>Gasto</th>
-          <th>Descripcion</th> 
-        </tr>
-        <tr>
-          <td>20/11/18</td>
-          <td>$60.0</td> 
-          <td>sdfsd</td>
-        </tr>
-        <tr>
-          <td>24/11/18</td>
-          <td>$120.0</td> 
-          <td>asd</td>
-        </tr>
-    </table> 
-    <p>Volver al <a href="1-1-index.html">Inicio</a></p>
-</body>
+<body>
+  <h2>My expenses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Gasto</th>
+            <th>Descripcion</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>20/11/18</td>
+            <td>$60.0</td> 
+            <td>sdfsd</td>
+          </tr>
+          <tr>
+            <td>24/11/18</td>
+            <td>$120.0</td> 
+            <td>asd</td>
+          </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+              <td>Sum</td>
+              <td>$180</td>
+            </tr>
+          </tfoot>
+      </table> 
+      <p>Volver al <a href="1-1-index.html">Inicio</a></p>
+  </body>
 </html>
