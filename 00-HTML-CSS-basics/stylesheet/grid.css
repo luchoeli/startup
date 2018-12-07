@@ -77,7 +77,7 @@ a:-webkit-any-link {
     text-decoration: underline;
 }
 
-.screen {
+.screenPopDown {
     background-color: rgba(0,0,0,0.6);
     left: 0;
     top: 0;
@@ -97,7 +97,7 @@ a:-webkit-any-link {
     transition-timing-function: ease-in-out;
     transition-delay: 0s;
 }
-.screen:hover {
+.screenPopDown:hover {
     opacity: 1;
 }
 .title {
