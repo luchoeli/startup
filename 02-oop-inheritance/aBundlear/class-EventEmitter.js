@@ -22,18 +22,15 @@ class EventEmitter {
         fn(eventName, data);
       });
     }
-  } //se desubscribe de una funcion de in evento
-
+  } 
 
   off(eventName, callback) {
     let unsubscribe = this.on(eventName, callback);
     unsubscribe();
-  } //se desubscribe de todo el evento
+  } 
 
 
   offEvent(eventName) {
-    //FIXME
-    //debugger;
     console.log(this.events.length);
 
     for (var i = 0; i < this.events.length; i++) {
@@ -47,3 +44,5 @@ class EventEmitter {
   }
 
 }
+
+export default EventEmitter;

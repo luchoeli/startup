@@ -1,3 +1,12 @@
+class Actor {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+}
+
+export default Actor;
 class EventEmitter {
   constructor() {
     this.events = {};
@@ -24,7 +33,6 @@ class EventEmitter {
     }
   } 
 
-
   off(eventName, callback) {
     let unsubscribe = this.on(eventName, callback);
     unsubscribe();
@@ -46,6 +54,15 @@ class EventEmitter {
 
 }
 
+export default EventEmitter;
+class Logger {
+  log(eventName, info) {
+    console.log("--- Evento: " + eventName + " de la pelicula " + info.title + " disparado.");
+  }
+
+}
+
+export default Logger;
 class Movie extends EventEmitter {
   constructor(name, year, duration) {
     super();
@@ -65,7 +82,7 @@ class Movie extends EventEmitter {
     this.on('resumeMovie', data => {
       console.log("reanudando " + this.title);
     });
-  }
+  } 
 
 
   play() {
@@ -92,30 +109,6 @@ Movie.prototype.addCast = function (actores) {
   }
 };
 
-class Actor {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-
-}
-
-const actors = [new Actor('Paul Winfield', 50), new Actor('Michael Biehn', 50), new Actor('Linda Hamilton', 50)];
-
-class Logger {
-  log(eventName, info) {
-    console.log("--- Evento: " + eventName + " de la pelicula " + info.title + " disparado.");
-  }
-
-}
-
-const johnP = new Actor("John Perez", 32);
-const peli = new Movie("titanic", 1997, "2:57:23");
-let logger = new Logger();
-peli.on('playMovie', logger.log);
-
-peli.offEvent("playMovie");
-
 let social = {
   share(friendName) {
     console.log(friendName + " share " + this.title);
@@ -127,3 +120,15 @@ let social = {
 
 };
 Object.assign(Movie.prototype, social);
+export default Movie;
+import { Actor } from "./class-Actor";
+import { Movie } from "./class-Movie";
+import { EventEmitter } from "./class-EventEmitter";
+import { Logger } from "./class-Logger";
+const actors = [new Actor('Paul Winfield', 50), new Actor('Michael Biehn', 50), new Actor('Linda Hamilton', 50)];
+const johnP = new Actor("John Perez", 32);
+const peli = new Movie("titanic", 1997, "2:57:23");
+let logger = new Logger();
+peli.on('playMovie', logger.log);
+s;
+peli.offEvent("playMovie");

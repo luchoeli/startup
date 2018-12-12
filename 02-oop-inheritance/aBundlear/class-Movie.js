@@ -17,7 +17,7 @@ class Movie extends EventEmitter {
     this.on('resumeMovie', data => {
       console.log("reanudando " + this.title);
     });
-  } //methods
+  } 
 
 
   play() {
@@ -35,7 +35,6 @@ class Movie extends EventEmitter {
 }
 
 Movie.prototype.addCast = function (actores) {
-  //elenco = elenco.concat(actores);
   if (Array.isArray(actores)) {
     for (i = 0; i < actores.length || actores.length == 0; i++) {
       this.elenco.push(actores[i]);
@@ -56,3 +55,5 @@ let social = {
 
 };
 Object.assign(Movie.prototype, social);
+
+export default Movie;
