@@ -19,7 +19,7 @@ class MovieForm extends React.Component {
     
     onSubmit(e) {
         e.preventDefault();
-        this.props.onAddMovie({
+        this.props.onUpdateList({
             title: this.titleRef.current.value,
             author: this.authorRef.current.value,
             duration: this.durationRef.current.value,
@@ -36,8 +36,7 @@ class MovieForm extends React.Component {
                 <label for="year"> year <input id="year"type="Number" name="year" ref={this.yearRef} /> </label><br/>
                 <input type="submit" value="Add Movie"/>
             </form>
-        
-        
+
         );
     }
 }
