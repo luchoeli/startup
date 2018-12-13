@@ -6,12 +6,14 @@ class MovieForm extends React.Component {
         this.state = {
             title: '',
             author:'', 
-            duration:''
+            duration:'',
+            year: ''
         }
-       // this.updateTitle = this.updateTitle.bind(this) 
+    
         this.titleRef = React.createRef() 
         this.authorRef = React.createRef()   
-        this.durationRef = React.createRef()   
+        this.durationRef = React.createRef()  
+        this.yearRef = React.createRef()    
         this.onSubmit = this.onSubmit.bind(this)  
     }
     
@@ -20,25 +22,18 @@ class MovieForm extends React.Component {
         this.props.onAddMovie({
             title: this.titleRef.current.value,
             author: this.authorRef.current.value,
-            duration: this.durationRef.current.value
+            duration: this.durationRef.current.value,
+            year: this.yearRef.current.value.toString()
         })
-    }
-
-
-    /*
-    updateTitle(e){
-        console.log(e.target.name)
-        this.setState({title: e.target.value})
-    }
-    */
-    
+    }    
 
     render() { 
         return ( 
             <form onSubmit={this.onSubmit}>  
-                <label> Title: <input type="text" name="title" ref={this.titleRef}   /> </label><br/>
-                <label> Author: <input type="text"  name="author" ref={this.authorRef} /> </label><br/>
-                <label> Duration: <input type="time"  name="duration" ref={this.durationRef} /> </label><br/>
+                <label for="title"> Title: <input id="title" type="text" name="title" ref={this.titleRef}   /> </label><br/>
+                <label for="author"> Author: <input id="author"type="text"  name="author" ref={this.authorRef} /> </label><br/>
+                <label for="duration"> Duration: <input id="duration"type="time"  name="duration" ref={this.durationRef} /> </label><br/>
+                <label for="year"> year <input id="year"type="Number" name="year" ref={this.yearRef} /> </label><br/>
                 <input type="submit" value="Add Movie"/>
             </form>
         

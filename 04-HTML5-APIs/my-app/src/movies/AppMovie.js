@@ -7,9 +7,9 @@ class AppMovie extends Component {
     constructor(){
         super()
         this.state = { 
-            movies: [{title: 'Titanic', author:'John Perez', year: 1992, duration:"2:57:23"},
-                     {title: 'Gladiador', author:'Richard Perez', year: 2334, duration:"2:57:23"},
-                     {title: 'Renacido', author:'Lance Perez', year: 2112, duration:"2:57:23"}, ]
+            movies: [{title: 'Titanic', author:'John Perez', year: "1992", duration:"2:57:23"},
+                     {title: 'Gladiador', author:'Richard Perez', year: "2334", duration:"2:57:23"},
+                     {title: 'Renacido', author:'Lance Perez', year: "2112", duration:"2:57:23"}, ]
         }
         this.addMovie = this.addMovie.bind(this)
     }
