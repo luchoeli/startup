@@ -1,15 +1,17 @@
 import React from 'react';
 class MovieForm extends React.Component {
     
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             title: '',
             author:'', 
             duration:'',
-            year: ''
+            year: '',
+            modo: props.modo
         }
-    
+
+
         this.titleRef = React.createRef() 
         this.authorRef = React.createRef()   
         this.durationRef = React.createRef()  
@@ -19,12 +21,24 @@ class MovieForm extends React.Component {
     
     onSubmit(e) {
         e.preventDefault();
-        this.props.onUpdateList({
-            title: this.titleRef.current.value,
-            author: this.authorRef.current.value,
-            duration: this.durationRef.current.value,
-            year: this.yearRef.current.value.toString()
-        })
+        if (this.props.movieOriginal) {
+            this.props.onUpdateList({
+                aEditar: this.props.movieOriginal, 
+                values: {
+                            title: this.titleRef.current.value,
+                            author: this.authorRef.current.value,
+                            duration: this.durationRef.current.value,
+                            year: this.yearRef.current.value.toString()
+                        }
+            })
+        } else {
+            this.props.onUpdateList({
+                title: this.titleRef.current.value,
+                author: this.authorRef.current.value,
+                duration: this.durationRef.current.value,
+                year: this.yearRef.current.value.toString()
+            })
+        }
     }    
 
     render() { 
@@ -34,9 +48,8 @@ class MovieForm extends React.Component {
                 <label for="author"> Author: <input id="author"type="text"  name="author" ref={this.authorRef} /> </label><br/>
                 <label for="duration"> Duration: <input id="duration"type="time"  name="duration" ref={this.durationRef} /> </label><br/>
                 <label for="year"> year <input id="year"type="Number" name="year" ref={this.yearRef} /> </label><br/>
-                <input type="submit" value="Add Movie"/>
+                <input type="submit" value={this.state.modo}/>
             </form>
-
         );
     }
 }
