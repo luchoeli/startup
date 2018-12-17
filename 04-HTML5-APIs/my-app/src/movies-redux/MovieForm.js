@@ -4,6 +4,10 @@ class MovieForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
+            title: '',
+            author:'', 
+            duration:'',
+            year: '',
             modo: props.modo
         }
 
@@ -17,7 +21,7 @@ class MovieForm extends React.Component {
     
     onSubmit(e) {
         e.preventDefault();
-        if (this.props.movieOriginal) { //pregunta si se esta editando
+        if (this.state.modo === "Edit movie") {
             this.props.onUpdateList({
                 aEditar: this.props.movieOriginal, 
                 values: {
@@ -27,13 +31,15 @@ class MovieForm extends React.Component {
                             year: this.yearRef.current.value.toString()
                         }
             })
-        } else { // si se esta agrregando
-            this.props.onUpdateList({
-                title: this.titleRef.current.value,
-                author: this.authorRef.current.value,
-                duration: this.durationRef.current.value,
-                year: this.yearRef.current.value.toString()
-            })
+        } else {
+            if (this.state.modo === "Add movie"){
+                this.props.onUpdateList({
+                    title: this.titleRef.current.value,
+                    author: this.authorRef.current.value,
+                    duration: this.durationRef.current.value,
+                    year: this.yearRef.current.value.toString()
+                })
+            }
         }
     }    
 

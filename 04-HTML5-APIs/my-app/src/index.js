@@ -1,3 +1,5 @@
+
+/*
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
@@ -10,3 +12,20 @@ ReactDOM.render(<AppMovie />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+*/
+
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from './movies-redux/reducers'
+import AppMovie from  './movies-redux/components/AppMovie'
+const store = createStore(rootReducer)
+
+render(
+  <Provider store={store}>
+    <AppMovie />
+  </Provider>,
+  document.getElementById('root')
+)
+

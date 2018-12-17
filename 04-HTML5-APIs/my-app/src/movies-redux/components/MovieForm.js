@@ -1,9 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { addMovieAction } from '../actions'
+
 class MovieForm extends React.Component {
     
     constructor(props){
         super(props)
         this.state = {
+            title: '',
+            author:'', 
+            duration:'',
+            year: '',
             modo: props.modo
         }
 
@@ -17,7 +24,8 @@ class MovieForm extends React.Component {
     
     onSubmit(e) {
         e.preventDefault();
-        if (this.props.movieOriginal) { //pregunta si se esta editando
+
+        if (this.state.modo === "Edit movie") {
             this.props.onUpdateList({
                 aEditar: this.props.movieOriginal, 
                 values: {
@@ -27,13 +35,17 @@ class MovieForm extends React.Component {
                             year: this.yearRef.current.value.toString()
                         }
             })
-        } else { // si se esta agrregando
-            this.props.onUpdateList({
-                title: this.titleRef.current.value,
-                author: this.authorRef.current.value,
-                duration: this.durationRef.current.value,
-                year: this.yearRef.current.value.toString()
-            })
+        } else {
+            if (this.state.modo === "Add movie"){
+                let movie = {
+                                title: this.titleRef.current.value,
+                                author: this.authorRef.current.value,
+                                duration: this.durationRef.current.value,
+                                year: this.yearRef.current.value.toString()
+                            }
+               this.props.addMovie(movie)
+    
+            }
         }
     }    
 
@@ -50,4 +62,19 @@ class MovieForm extends React.Component {
     }
 }
  
-export default MovieForm;
+const mapStateToProps = state => {
+    console.log(state);
+    return {
+        movies: state.appmovie.movies
+    }
+}
+  
+  const mapDispatchToProps = dispatch => ({
+    addMovie: movie => dispatch(addMovieAction(movie))
+  })
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MovieForm)
+  

@@ -50,7 +50,7 @@ class AppMovie extends Component {
         }
     
         var lista = this.state.movies;
-       this.state.movies.splice(index,1)
+        this.state.movies.splice(index,1)
         this.setState({
             movies: lista
         })     
