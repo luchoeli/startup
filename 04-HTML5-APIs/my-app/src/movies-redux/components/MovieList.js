@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { deleteMovieAction, editMovieAction } from '../actions'
-//import EditMovieForm from './editMovieForm';
+import MovieForm from './MovieForm';
+import MovieListItem from './MovieListItem'
 
 class MovieList extends React.Component {
     constructor(){
@@ -35,7 +36,6 @@ class MovieList extends React.Component {
 
     removerMovie(e){
         e.preventDefault();
-        //this.props.onDeleteMovie(e.target.attributes.tittlemovie.value)
         this.props.deleteMovie(e.target.attributes.tittlemovie.value)
     }
     
@@ -45,7 +45,6 @@ class MovieList extends React.Component {
         this.setState({tituloAborrar: title}, function(){
             this.changeMode()
         })
-        // no necesariamente se cambie
     }
 
     render() { 
@@ -65,10 +64,10 @@ class MovieList extends React.Component {
             
         }
         if (this.state.modo === "editando"){
-                        //<EditMovieForm onEditMovie={this.props.onEditMovie} movie={this.state.movieABorrar} moviedata={this.state.tituloAborrar}/>
             return(
                     <div>
                         <p>Editing {this.state.tituloAborrar}</p> 
+                        <MovieForm modo={"Edit movie"} movieOriginal={this.state.tituloAborrar} changeMode={this.changeMode}/>
                         <button onClick={this.changeMode}> Volver a la lista </button>
                     </div>
             );
@@ -84,7 +83,7 @@ class MovieList extends React.Component {
                     </select>
                     <input type="text" onChange={this.filter.bind(this)}/>
                     <ul>
-                        {movies.map((item, index) => <Movie key={index} movie={item} editarla={this.editarMovie} removerla={this.removerMovie}/>)}     
+                        {movies.map((item, index) => <MovieListItem key={index} movie={item} editarla={this.editarMovie} removerla={this.removerMovie}/>)}     
                     </ul>
                     
                 </div>
@@ -93,38 +92,13 @@ class MovieList extends React.Component {
     }
 }
 
-const Movie = (props) => <li> 
-                            <hr/>
-                            <div>
-                                <span>{props.movie.title}</span> <br/>
-                                <span>{props.movie.author}</span> <br/>
-                                <span>{props.movie.year}</span> <br/>
-                                <span>{props.movie.duration}</span> <br/>
-
-                                <button 
-                                    title={props.movie.title} 
-
-                                    onClick={props.editarla}>
-                                    edit 
-                                </button> 
-                                
-                                <button 
-                                    tittlemovie={props.movie.title} 
-                                    onClick={props.removerla}> 
-                                    delete 
-                                </button>                             
-                            </div>
-                        </li>;
-
 const mapStateToProps = state => {
-    console.log(state);
     return {
         movies: state.appmovie.movies
     }
 }
   
   const mapDispatchToProps = dispatch => ({
-    // en vez de un movie es un titulo. tendria que ser id
     deleteMovie: movie => dispatch(deleteMovieAction(movie)),
     editMovie: movie  => dispatch(editMovieAction(movie))  
   })

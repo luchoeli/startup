@@ -1,16 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { addMovieAction } from '../actions'
+import { addMovieAction, editMovieAction } from '../actions'
 
 class MovieForm extends React.Component {
     
     constructor(props){
         super(props)
         this.state = {
-            title: '',
-            author:'', 
-            duration:'',
-            year: '',
             modo: props.modo
         }
 
@@ -24,9 +20,8 @@ class MovieForm extends React.Component {
     
     onSubmit(e) {
         e.preventDefault();
-
         if (this.state.modo === "Edit movie") {
-            this.props.onUpdateList({
+            this.props.editMovie({
                 aEditar: this.props.movieOriginal, 
                 values: {
                             title: this.titleRef.current.value,
@@ -35,6 +30,8 @@ class MovieForm extends React.Component {
                             year: this.yearRef.current.value.toString()
                         }
             })
+            this.props.changeMode()
+           
         } else {
             if (this.state.modo === "Add movie"){
                 let movie = {
@@ -63,14 +60,14 @@ class MovieForm extends React.Component {
 }
  
 const mapStateToProps = state => {
-    console.log(state);
     return {
         movies: state.appmovie.movies
     }
 }
   
   const mapDispatchToProps = dispatch => ({
-    addMovie: movie => dispatch(addMovieAction(movie))
+    addMovie: movie => dispatch(addMovieAction(movie)),
+    editMovie: movie => dispatch(editMovieAction(movie))
   })
   
   export default connect(

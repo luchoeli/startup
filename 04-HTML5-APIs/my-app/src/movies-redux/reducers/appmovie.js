@@ -25,9 +25,21 @@ const appmovie = (state = initialState, action) => {
        
 
         case 'EDIT_MOVIE' :
-            return state.map(
+            let aeditar = action.movie.aEditar
+            let values = action.movie.values    
+            var index = -1;
+            for(var i = 0, len = state.movies.length ;i < len; i++) {
+                if (state.movies[i].title === aeditar) {
+                    index = i;
+                    break; 
+                }
+            }
+            state.movies.splice(index,1,values)
+            return({
+                movies: state.movies
+            })
 
-            )
+           
       default:
         return state
     }
