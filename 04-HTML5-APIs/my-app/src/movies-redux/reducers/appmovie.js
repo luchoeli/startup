@@ -1,5 +1,9 @@
 const initialState = {
-                        movies: []
+                        movies: [
+                                    {title: 'Titanic', author:'John Perez', year: "1992", duration:"2:57:23"},
+                                    {title: 'Gladiador', author:'Richard Perez', year: "2334", duration:"2:57:23"},
+                                    {title: 'Renacido', author:'Lance Perez', year: "2112", duration:"2:57:23"}, 
+                                ]
                     }
 
 const appmovie = (state = initialState, action) => {
@@ -11,32 +15,19 @@ const appmovie = (state = initialState, action) => {
             }
         
         case 'REMOVE_MOVIE':
-            return state.map(
-
-            )
+        
+            var filtered = state.movies.filter(function(value, index, arr){
+                    return state.movies[index].title !== action.movie;
+            });
+            return({
+                movies: filtered
+            })
+       
 
         case 'EDIT_MOVIE' :
             return state.map(
 
             )
-        /*
-            case 'ADD_TODO':
-                return [
-                ...state,
-                {
-                    id: action.id,
-                    text: action.text,
-                    completed: false
-                }
-                ]
-
-            case 'TOGGLE_TODO':
-                return state.map(todo =>
-                (todo.id === action.id)
-                    ? {...todo, completed: !todo.completed}
-                    : todo
-                )
-        */
       default:
         return state
     }

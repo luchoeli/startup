@@ -5,7 +5,16 @@ export const addMovieAction = movie => ({
   movie
 })
 
+export const deleteMovieAction = movie => ({
+  type: 'REMOVE_MOVIE',
+  movie
+})
 
+export const editMovieAction = movie => ({
+  type: 'EDIT_MOVIE',
+  movie
+})
+/*
 export const setVisibilityFilter = filter => ({
   type: 'SET_VISIBILITY_FILTER',
   filter
@@ -21,3 +30,4 @@ export const VisibilityFilters = {
   SHOW_COMPLETED: 'SHOW_COMPLETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE'
 }
+*/
