@@ -1,0 +1,6 @@
+section.hidden {
+    text-align: center; 
+    opacity: 0;
+    transition: 5.8s;
+}
+
