@@ -7,8 +7,9 @@ function init(){
 }
 
 function showHidden(){
-    var sections = document.getElementById("hidden");
-    sections.style.opacity= 1;
+    var sections = Array.from(document.getElementsByClassName("hidden"));
+    sections.map(section => section.style.opacity= 1)
+    
 }
 
 function agregarListeners(){
@@ -20,7 +21,6 @@ function agregarListeners(){
             Http.open("GET", url);
             Http.send();
             Http.onreadystatechange = function(){
-                console.log(Http.readyState + " sdfjkdhk " + Http.status );
                 if (Http.readyState == 4 && Http.status == 200) {
                     try {
                         var json = JSON.parse(Http.responseText);
@@ -31,7 +31,7 @@ function agregarListeners(){
                     document.getElementById("joke").innerHTML = json.value.joke;
                 } else {
                     if (Http.status >= 500 && Http.status <= 511){
-                        var section = document.getElementById("hidden");
+                        var section = document.getElementsByClassName("hidden");
                         section.style.backgroundColor = red;
                     }
                 }
@@ -47,18 +47,14 @@ function serchRepo(){
     
     const Http = new XMLHttpRequest(); 
     var input = document.getElementById("inputParameter").value;
-    input = input.replace(" ","+topic:"); 
-   
     var urlFinal = "https://api.github.com/search/repositories?q=topic:";
     urlFinal = urlFinal.concat(input);
-    alert(urlFinal);
-    //const url='https://api.github.com/search/repositories?q=topic:';
-    const url= urlFinal;
-    alert(url);
-    Http.open("GET", url);
+    urlFinal= encodeURI(urlFinal);
+    console.log(urlFinal)
+    Http.open("GET", urlFinal);
     Http.send();
     Http.onreadystatechange = function(){
-        console.log(Http.readyState + " sdfjkdhk " + Http.status );
+        
         if (Http.readyState == 4 && Http.status == 200) {
             try {
                 var json = JSON.parse(Http.responseText);
@@ -66,12 +62,12 @@ function serchRepo(){
                 console.log(err.message + " in " + Http.responseText);
                 return;
             } 
-            json.items.forEach(analizarItem);
-            //document.getElementById("repos").innerHTML = json.total_count;
+            json.items.forEach(jsonToListItem);
+           
 
         } else {
             if (Http.status >= 500 && Http.status <= 511){
-                var section = document.getElementById("hidden");
+                var section = document.getElementsByClassName("hidden");
                 section.style.backgroundColor = red;
             }
         }
@@ -79,8 +75,7 @@ function serchRepo(){
 
 }
 
-function analizarItem(item){
-    console.log(item.id);
+function jsonToListItem(item){
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(item.id + ":  "+ item.name + " "+ item.owner.html_url));
     var luAux = document.getElementById("lista");
@@ -89,7 +84,6 @@ function analizarItem(item){
 
 function buscarRepositorios(){
     var btn = document.getElementById("repoSearchButton");
-    console.log("HOLLLAAA");
     if (btn){
         btn.addEventListener("click", serchRepo);
     }else{
